@@ -16,11 +16,11 @@ def main():
     if timeSlice == 0:
         sp.Popen([GHOST_SCRIPT, HOUR, reps]) 
     elif timeSlice == 15:
-        sp.Popen([GHOST_SCRIPT, FIFTEEN, None])  # reps only for hour
+        sp.Popen([GHOST_SCRIPT, FIFTEEN, '-'])  # reps only for hour
     elif timeSlice == 30:
-        sp.Popen([GHOST_SCRIPT, THIRTY, None])
+        sp.Popen([GHOST_SCRIPT, THIRTY, '-'])
     elif timeSlice == 45:
-        sp.Popen([GHOST_SCRIPT, FORTYFIVE, None])
+        sp.Popen([GHOST_SCRIPT, FORTYFIVE, '-'])
     else:
         raise Exception("Invalid timeWord. Something likely wrong with when" +
                 " Crontab starts master script")

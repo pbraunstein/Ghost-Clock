@@ -12,13 +12,13 @@ def main():
     timeRegion = argv[1]
     numChimes = int(argv[2])
 
-    if timeRegion == 'hour':
+    if timeRegion == HOUR:
         hourChime(numChimes)
-    elif timeRegion == 'fifteen':
+    elif timeRegion == FIFTEEN:
         pass
-    elif timeRegion == 'thirty':
+    elif timeRegion == THIRTY:
         pass
-    elif timeRegion == 'fortyfive':
+    elif timeRegion == FORTYFIVE:
         pass
     else:
         raise("Invalid time option passed to ghost script")
@@ -33,8 +33,6 @@ def hourChime(numChimes):
         p.moveTo(LL_X, LL_Y, duration=SWEEP_TIME)
         p.moveTo(UL_X, UL_Y, duration=SWEEP_TIME)
         time.sleep(1)
-
-
 
 
 if __name__ == '__main__':

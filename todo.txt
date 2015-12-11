@@ -1,4 +1,0 @@
-horizontal line for 30min
-reg triangle for 15min
-inverted triangle for 45min
-use boundries of screen for more exactness?

@@ -1,36 +1,40 @@
 #!/usr/bin/env python
 import pyautogui as p
+from constants import *
 import time
 from sys import argv
-from Quartz import CGDisplayBounds
-from Quartz import CGMainDisplayID
-
-# Constants
-OFF  = 100
 
 def main():
-    # Get screen bounds
-    infos = CGDisplayBounds(CGMainDisplayID())
-    w = infos.size.width
-    h = infos.size.height
+    if len(argv) != 3:
+        raise("Wrong number of arguments passed to ghost script")
 
-    # Calculate corners
-    UL_X = OFF
-    UL_Y = OFF
-    UR_X = w - OFF
-    UR_Y = OFF
-    LR_X = w - OFF
-    LR_Y = h - OFF
-    LL_X = OFF
-    LL_Y = h - OFF
+    # Pull out args
+    timeRegion = argv[1]
+    numChimes = int(argv[2])
 
-    p.moveTo(UL_X, UL_Y, duration=0.75)
-    for x in range(int(argv[1])):
-        p.moveTo(UR_X, UR_Y, duration=0.75)
-        p.moveTo(LR_X, LR_Y, duration=0.75)
-        p.moveTo(LL_X, LL_Y, duration=0.75)
-        p.moveTo(UL_X, UL_Y, duration=0.75)
+    if timeRegion == 'hour':
+        hourChime(numChimes)
+    elif timeRegion == 'fifteen':
+        pass
+    elif timeRegion == 'thirty':
+        pass
+    elif timeRegion == 'fortyfive':
+        pass
+    else:
+        raise("Invalid time option passed to ghost script")
+
+
+# Traces numChimes number of squares with the mouse
+def hourChime(numChimes):
+    p.moveTo(UL_X, UL_Y, duration=SWEEP_TIME)
+    for x in range(numChimes):
+        p.moveTo(UR_X, UR_Y, duration=SWEEP_TIME)
+        p.moveTo(LR_X, LR_Y, duration=SWEEP_TIME)
+        p.moveTo(LL_X, LL_Y, duration=SWEEP_TIME)
+        p.moveTo(UL_X, UL_Y, duration=SWEEP_TIME)
         time.sleep(1)
+
+
 
 
 if __name__ == '__main__':
